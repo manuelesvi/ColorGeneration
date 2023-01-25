@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ColorGeneration.MainPage">
+    <ScrollView>
+        <VerticalStackLayout
+            Spacing="0"
+            Padding="10,0"
+            VerticalOptions="Start" HorizontalOptions="Fill">
+            <GraphicsView x:Name="gv1"
+                      HeightRequest="60"
+                      WidthRequest="1200" />
+            <GraphicsView x:Name="gv2"
+                      HeightRequest="60"
+                      WidthRequest="1200" />
+            <GraphicsView x:Name="gv3"
+                      HeightRequest="60"
+                      WidthRequest="1200" />
+            <GraphicsView x:Name="gv4"
+                      HeightRequest="60"
+                      WidthRequest="1200" />
+            <GraphicsView x:Name="gv5"
+                      HeightRequest="60"
+                      WidthRequest="1200" />
+            <GraphicsView x:Name="gv6"
+                      HeightRequest="60"
+                      WidthRequest="1200" />
+
+            <HorizontalStackLayout Spacing="10" Margin="0,10,0,0">
+                <HorizontalStackLayout Spacing="10" Margin="40,10,0,0">
+                    <Label Text="Saturation" />
+                    <Slider x:Name="Saturation" Maximum="1" Value="0.8"
+                        WidthRequest="300"
+                        ValueChanged="Slider_ValueChanged"/>
+                    <Entry x:Name="SaturationEntry" WidthRequest="30" />
+                </HorizontalStackLayout>
+
+                <HorizontalStackLayout Spacing="10" Margin="0,10,0,0">
+                    <Label Text="Lightness" />
+                    <Slider x:Name="Lightness" Maximum="0.9" Value="0.4"
+                        WidthRequest="300"
+                        ValueChanged="Slider_ValueChanged"/>
+                    <Entry x:Name="LightnessEntry" WidthRequest="30" />
+                </HorizontalStackLayout>
+            </HorizontalStackLayout>
+            
+            <Editor x:Name="Output" 
+                    HeightRequest="300" 
+                    HorizontalOptions="Fill" />
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>
