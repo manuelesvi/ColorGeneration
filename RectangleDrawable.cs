@@ -4,7 +4,7 @@ internal class RectangleDrawable : IDrawable
 {
     public double Saturation;
     public double Lightness;
-    
+
     public void Draw(ICanvas canvas, RectF dirtyRect)
     {
         const int steps = 30;

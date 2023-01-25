@@ -1,14 +1,10 @@
-﻿using Microsoft.Maui.Graphics;
-using System.Collections.Concurrent;
-using System.Text;
-using Debug = System.Diagnostics.Debug;
+﻿using System.Text;
 
 namespace ColorGeneration;
 
 public partial class MainPage : ContentPage
 {
-    public static Dictionary<double, List<Color>> Colors = new();
-    EventHandler<TextChangedEventArgs> onTxtChanged;
+    private readonly EventHandler<TextChangedEventArgs> onTxtChanged;
 
     public MainPage()
     {
@@ -33,7 +29,8 @@ public partial class MainPage : ContentPage
         SaturationEntry.TextChanged += onTxtChanged;
         LightnessEntry.TextChanged += onTxtChanged;
 
-        Loaded += async (s,e) => {
+        Loaded += async (s, e) =>
+        {
             await Task.Delay(1000);
             StringBuilder sb = new();
             foreach (var hue in Colors.Keys)
@@ -51,6 +48,8 @@ public partial class MainPage : ContentPage
         };
     }
 
+    public static Dictionary<double, List<Color>> Colors { get; } = new();
+
     private void Redraw()
     {
         LightnessEntry.Text = Lightness.Value.ToString();
@@ -60,12 +59,12 @@ public partial class MainPage : ContentPage
             Saturation = Saturation.Value,
             Lightness = Lightness.Value,
         };
+        gv1.Invalidate();
 
         List<GraphicsView> views = new()
         {
             gv2, gv3, gv4, gv5, gv6
         };
-        gv1.Invalidate();
 
         double increment = (Lightness.Maximum - Lightness.Value) / views.Count;
         for (int i = 1; i <= views.Count; i++)
