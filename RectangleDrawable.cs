@@ -1,10 +1,20 @@
-﻿namespace ColorGeneration;
+﻿using Microsoft.Maui.Graphics.Text;
+using System.Diagnostics;
+
+namespace ColorGeneration;
 
 internal class RectangleDrawable : IDrawable
 {
+    
     public double Saturation;
     public double Lightness;
+    public int Index;
 
+    /// <summary>
+    /// Draws 30 rectangles (40x60) of distinct colors.
+    /// </summary>
+    /// <param name="canvas"></param>
+    /// <param name="dirtyRect"></param>
     public void Draw(ICanvas canvas, RectF dirtyRect)
     {
         const int steps = 30;
@@ -16,14 +26,26 @@ internal class RectangleDrawable : IDrawable
         float height = dirtyRect.Height;
         for (int i = 0; i < steps; i++)
         {
-            hue = i / Convert.ToDouble(steps);
-            color = Color.FromHsla(hue, Saturation, Lightness);
-            if (!MainPage.Colors.ContainsKey(hue))
+            if (MainPage.IsRandomized)
             {
-                MainPage.Colors[hue] = new List<Color>();
+                color = MainPage.RandomColors[i][Index];
             }
-            MainPage.Colors[hue].Add(color);
+            else
+            {
+                hue = i / Convert.ToDouble(steps);
+                color = Color.FromHsla(hue, Saturation, Lightness);
+                if (!MainPage.Colors.ContainsKey(hue))
+                {
+                    MainPage.Colors[hue] = new List<Color>();
+                }
+                MainPage.Colors[hue].Add(color);
+            }
+
             canvas.FillColor = color;
+            Debug.Write(color.GetHue().ToString("f2") + "   ");
+
+            //var txt = MarkdownAttributedTextReader.Read(color.GetHue().ToString());
+            //canvas.DrawText(txt, i * width + 10, 10, width - 5, 20);
             canvas.FillRectangle(i * width, margin, width, height);
         }
     }
