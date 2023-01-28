@@ -104,7 +104,7 @@ public partial class MainPage : ContentPage
     {
         const int chunkSize = 5;
 
-        int numChunks = Colors.Count / chunkSize; // 30 / 5
+        int numChunks = Colors.Count / chunkSize; // 6
         double[][] chunks = new double[Colors.Count][];
         for (int i = 0; i < numChunks; i++)
         {

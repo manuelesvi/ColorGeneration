@@ -42,10 +42,7 @@ internal class RectangleDrawable : IDrawable
             }
 
             canvas.FillColor = color;
-            Debug.Write(color.GetHue().ToString("f2") + "   ");
-
-            //var txt = MarkdownAttributedTextReader.Read(color.GetHue().ToString());
-            //canvas.DrawText(txt, i * width + 10, 10, width - 5, 20);
+            Debug.Write(color.GetHue().ToString("f8") + " ");
             canvas.FillRectangle(i * width, margin, width, height);
         }
     }
