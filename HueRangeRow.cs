@@ -1,9 +1,8 @@
-﻿using Microsoft.Maui.Graphics.Text;
-using System.Diagnostics;
+﻿using System.Diagnostics;
 
 namespace ColorGeneration;
 
-internal class RectangleDrawable : IDrawable
+internal class HueRangeRow : IDrawable
 {
     
     public double Saturation;

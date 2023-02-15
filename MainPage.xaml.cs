@@ -56,7 +56,7 @@ public partial class MainPage : ContentPage
     {
         LightnessEntry.Text = Lightness.Value.ToString();
         SaturationEntry.Text = Saturation.Value.ToString();
-        gv1.Drawable = new RectangleDrawable()
+        gv1.Drawable = new HueRangeRow()
         {
             Saturation = Saturation.Value,
             Lightness = Lightness.Value,
@@ -72,7 +72,7 @@ public partial class MainPage : ContentPage
         double increment = (Lightness.Maximum - Lightness.Value) / views.Count;
         for (int i = 1; i <= views.Count; i++)
         {
-            views[i - 1].Drawable = new RectangleDrawable()
+            views[i - 1].Drawable = new HueRangeRow()
             {
                 Saturation = Saturation.Value,
                 Lightness = Lightness.Value + increment * i,
