@@ -139,7 +139,8 @@ public partial class MainPage : ContentPage
                 randWithin.Add(colorList[index]);
                 colorList.RemoveAt(index);  // cleaning the ass >:|
             }
-            Trace.Assert(colorList.Count == 0, "colorList count is zero (0)");
+            Trace.Assert(colorList.Count == 0, "colorList's count is NOT zero (0)");
+            Trace.Information("Color Count = {0}", colorList.Count);
             theChunks.Add(randWithin);
         }
 
