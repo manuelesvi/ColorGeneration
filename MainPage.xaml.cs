@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Text;
 
 namespace ColorGeneration;
@@ -138,6 +139,7 @@ public partial class MainPage : ContentPage
                 randWithin.Add(colorList[index]);
                 colorList.RemoveAt(index);  // cleaning the ass >:|
             }
+            Trace.Assert(colorList.Count == 0, "colorList count is zero (0)");
             theChunks.Add(randWithin);
         }
 
